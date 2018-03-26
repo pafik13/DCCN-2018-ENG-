@@ -13,7 +13,7 @@
 
 \makeatletter
 \fancyhead[RO]{\small DCCN 2018\\ {17-21 September 2018}}
-\fancyhead[LO]{\small Author 1, Author 2, et al.\\Short version of the article title}
+\fancyhead[LO]{\small E. Yu. Shchetinin, et al.\\Short version of the article title}
 
 \c@page=1 % Number will be set by publisher.
        
@@ -21,18 +21,21 @@
 
 
 % Full title of the paper in English
-\title{Thesis Template for the Preparation of Contributions to Proceedings of the ``Distributed Computer and Communication Networks: Control, Computation, Communications'' Conference}
+\title{Development of an effective algorithm for short-term forecasting of 
+  power consumption using ensemble}
 %Author's (co-authors') name(s)
-\author[1]{\small A.B. First}
-\author[2]{\small  C.D. Second}
-\author[1,3]{\small E.F. Third}
-\author[1]{\small G.H. Fourth}
+\author[1]{\small E. Yu. Shchetinin}
+\author[2]{\small M. V. Berezhkov}
+\author[2]{\small P. G. Lyubin}
 %Affiliations:
-\affil[1]{\footnotesize Organization1, Address, City, Country}
-\affil[2]{\footnotesize Organization2, Address, City, Country}
-\affil[3]{\footnotesize Organization3, Address, City, Country}
+\affil[1]{\footnotesize All-Russian Research Institute\\
+  for Civil Defense and Emergencies of the MESRF\\
+  (Science and High Technology Federal Center)\\
+  Davydkovskaya str., 7, Moscow, 121352, Russia}
+\affil[2]{Moscow State University of Technology ``STANKIN'',\\ 
+  Vadkovsky lane, 3a, Moscow, 127055, Russia}
 
-\email{e-mail1@mail.box, e-mail2@mail.box, e-mail3@mail.box}
+\email{\url{lyubin.p@gmail.com}, \url{riviera-molto@mail.ru}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -48,26 +51,44 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-Please type a short abstract here (70 -- 150 words) which summarizes the contents of the paper.
-Do not use special characters, symbols, or math in your title
-or abstract. The abstract should be written using the \emph{abstract} environment.
-\keywords{We would like to encourage you to list your keywords within
-the abstract section}
+Short-term forecasting of electricity consumption is an actual task in many
+areas of human activity due to the specificity: consumers and power companies
+can't accumulate energy and can't store energy. At the first, consumers which
+participating in the wholesale electricity market must to submit a plan of
+future consumption, and energy-generating companies need to plan the output.
+Secondly, this indicator can be used as one of the features when fitting other
+models. At the same time, the consumption of electrical energy by any object is
+a time series, since it represents the instantaneous values of the consumed
+power measured at different times with a certain periodicity. In article we
+demonstrate a simple and effective method for short-term forecasting of power
+consumption. The approach is based on the method of base models ensemble (RPART
+- Recursive PARTitioning, CTREE - Conditional Inference Trees
+\cite{BreimanEtAl}) and has a good prediction level comparable with more complex
+algorithms. The ensemble method is an algorithm for combining a set of trained
+models to improve the accuracy of the forecast with trying to avoid overfitting.
+There are several ensemble methods that have their disadvantages and advantages.
+We used Bagging (Bootstrap aggregating \cite{Breiman1996}) which helped to
+improve the predictive power of particular base models.
+
+\keywords{short-term forecast, ensemble, RPART, CTREE, random trees, power
+consumption, bagging}
 \end{abstract}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Introduction}
+The most common methods of time series forecasting are:
+\begin{itemize}
+    \item extrapolation
+    \item expert (intuitive) methods
+    \item correlation and regression analises
+    \item ARIMA-based methods
+    \item adaptive methods
+    \item Neural Network
+    \item Hibryd Network
+\end{itemize}
 
-This template file is intended to serve as a ``starter file'' for
-the DCCN 2018 papers produced under \LaTeX.
-
-The authors should submit up to 8 pages of the full-text paper. Use GOST "70$\times$100 1/16"
-(170 x 240 mm paper size) format of the paper. Margins: top 15 mm, bottom
-20 mm, right 15 mm, left 15 mm. Text height is 205 mm, width is
-140 mm. Please, do not use page
-numbering in your paper. Actually, the authors don't have to be bothered about margins or suchlike,
-because all the page geometry parameters are already set up in the DCCN2018\_en.sty style file.
+These methods can be used to predict electricity consumption and have inherent advantages and disadvantages. In modern works, more often than others, solutions of this problem are described with the use of artificial neural networks.
 
 
 \subsection{Subsection heading here}
