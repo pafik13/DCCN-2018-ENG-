@@ -88,8 +88,36 @@ The most common methods of time series forecasting are:
     \item Hibryd Network
 \end{itemize}
 
-These methods can be used to predict electricity consumption and have inherent advantages and disadvantages. In modern works, more often than others, solutions of this problem are described with the use of artificial neural networks.
+These methods can be used to predict electricity consumption and have inherent advantages and disadvantages. In modern works, more often than others, solutions of this problem are described with the use of artificial neural networks, the disadvantages of which include the complexity of tuning and the complexity of interpretation. In this paper, we use the approach with an ensemble of models. The figure \ref{fig:data} shows the dynamics of hourly electricity consumption in Russia for 3 weeks in 2017: from June 13 to July 3.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\linewidth]{train_dataset.jpeg}
+  \caption{Source data}
+  \label{fig:data}
+\end{figure}
 
+\section{Approach}
+\label{sec:methods}
+The most common methods of ensemble methods are:
+\begin{itemize}
+    \item Simple Voting
+    \item Weighted Voting
+    \item Mixture of Experts
+    \item Boosting
+    \item Bagging - Bootstrap aggregating \cite{Breiman1996}
+\end{itemize}
+In our work we used baging, which was proposed by L. Breiman in 1996. The method consists in the formation of various training sub-samples from a random selection of return - some objects fall into the sub-sample several times, some never. Basic algorithms, trained in subsamples, are combined into a composition using simple voting. The advantages of bagging are: firstly, the possibility of using various basic algorithms, the errors of which can be mutually compensated in the voting; secondly, some training subsamples may not contain emission objects and the algorithm constructed from these subsamples may turn out to be more accurate than an algorithm constructed from a full sample. In this paper, RPART and CTREE are used as the basic algorithms. The result of forecasting electricity consumption for one day ahead (July 4, 2017) is shown in the figure \ref{fig:prediction}.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\linewidth]{prediction.jpg}
+  \caption{Prediction with bagging}
+  \label{fig:prediction}
+\end{figure}
+
+
+
+\section{Conclusion}
+This paper demonstrates a simple and effective method of short-term forecasting of electricity consumption that can be used by energy market participants in the planning of generation and in the planning of purchases.
 
 \subsection{Subsection heading here}
 
